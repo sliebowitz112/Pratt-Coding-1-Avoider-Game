@@ -14,4 +14,12 @@ public class EnemyMovement : MonoBehaviour
     {
         transform.position += new Vector3(objectSpeed, 0, 0) * Time.deltaTime;
     }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Boundary"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
