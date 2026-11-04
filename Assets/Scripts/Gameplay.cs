@@ -38,9 +38,12 @@ public class Gameplay : MonoBehaviour
         if (boostTimer >= boostCooldown && boostStatus == 1)
         {
            boostTimer = 0;
-           movementSpeed += 10;
+            movementSpeed += 15;
         }
-
+        else if (boostTimer <= boostCooldown && movementSpeed > 5)
+        {
+            movementSpeed -= 0.5f;
+        }
 
 
     }
