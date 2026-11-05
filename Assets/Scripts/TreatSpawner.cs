@@ -4,26 +4,39 @@ public class TreatSpawner : MonoBehaviour
 {
     public GameObject[] treatObjects;
     public float spawnCooldown = 2;
-    public float gameTime = 0;
+    
     public float minPosition;
     public float maxPosition;
     public float minEnemySpeed;
     public float maxEnemySpeed;
+    public float easyGameTime = 0;
+    public float mediumGameTime;
+    public float hardGameTime;
+    public float totalGameTime; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gameTime = 0;
+        easyGameTime = 0;
+        mediumGameTime = 0;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameTime += Time.deltaTime;
-        if (gameTime >= spawnCooldown)
+        easyGameTime += Time.deltaTime;
+        mediumGameTime += Time.deltaTime;
+
+        if (easyGameTime >= spawnCooldown)
         {
-            gameTime = 0;
+            easyGameTime = 0;
             SpawnEnemy();
             Debug.Log("spawn enemy");
+        }
+
+        if (mediumGameTime >= spawnCooldown && totalGameTime > 15)
+        {
+            spawnCooldown = 1;
         }
     }
     void SpawnEnemy()
