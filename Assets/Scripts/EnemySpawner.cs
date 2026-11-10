@@ -44,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
             easyLevel = true;
         }
 
-        if (mediumGameTime >= spawnCooldown && totalGameTime > 15)
+        if (mediumGameTime >= spawnCooldown && totalGameTime > 5)
         {
             spawnCooldown = 1;
             mediumGameTime = 0;
@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
             mediumLevel = true;
         }
 
-        if (hardGameTime >= spawnCooldown && hardGameTime > 20)
+        if (hardGameTime >= spawnCooldown && hardGameTime > 10)
         {
             spawnCooldown = 0.5f;
             hardGameTime = 0;

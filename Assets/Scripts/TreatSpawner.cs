@@ -12,12 +12,13 @@ public class TreatSpawner : MonoBehaviour
     public float mediumGameTime;
     public float hardGameTime;
     public float totalGameTime;
-    public bool treatSpawn;
+    public static bool treatSpawn;
     float gameTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        treatSpawn = false;
         transform.position = new Vector3(0, 0, 0);
         gameTime = 0;
     }
@@ -26,12 +27,17 @@ public class TreatSpawner : MonoBehaviour
     void Update()
     {
         gameTime += Time.deltaTime;
-
+        if (gameTime >= treatCooldown && treatSpawn == true)
+        {
+            SpawnTreat();
+            gameTime = 0;
+        }
         
 
     }
     public void SpawnTreat()
     {
+            treatSpawn = false;
          
             // get random position at spawn
             Vector3 randomPosition = transform.position;
