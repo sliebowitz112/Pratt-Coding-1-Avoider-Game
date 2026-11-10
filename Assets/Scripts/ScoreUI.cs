@@ -16,8 +16,15 @@ public class ScoreUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Gameplay.gameOver == true)
+        {
+            text.text = $" ";
+            text.fontSize = 70;
+        }
+
         
     }
+
     public void OnTreatPickup()
     {
         score++;

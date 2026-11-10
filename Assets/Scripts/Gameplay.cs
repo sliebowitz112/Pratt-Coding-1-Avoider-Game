@@ -7,6 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class Gameplay : MonoBehaviour
 {
+    
     public float gameTime;
     Vector3 pos;
     private float spacebarStatus;
@@ -26,8 +27,10 @@ public class Gameplay : MonoBehaviour
     public float boostTimer = 0;
     private float resetStatus;
     public static bool boostAvail;
+    public static bool gameOver;
     void Start()
     {
+        gameOver = false;
         rb = GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
         gameTime = 0;
@@ -81,6 +84,8 @@ public class Gameplay : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             gameObject.SetActive(false);
+            gameOver = true;
+
         }
         else if (other.CompareTag("Treat"))
         {

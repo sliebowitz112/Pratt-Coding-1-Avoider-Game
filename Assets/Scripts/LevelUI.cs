@@ -4,10 +4,11 @@ using UnityEngine.SocialPlatforms.Impl;
 public class LevelUI : MonoBehaviour
 {
     private TMP_Text boost;
-    public float totalGameTime;
+   
     private TMP_Text timer;
     public float boostTimer;
     private float timers = 0f;
+    private float totalTime = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,8 +25,8 @@ public class LevelUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+
+        totalTime += Time.deltaTime;
         if (boostTimer <= 3)
         {
             timers -= Time.deltaTime;
@@ -43,8 +44,12 @@ public class LevelUI : MonoBehaviour
                 timers = 3;
             }
         }
-       
-        totalGameTime += Time.deltaTime;
+        if (Gameplay.gameOver == true)
+            {
+                boost.text = " ";
+            }
+
+      
        // timer.text = $"Time: {totalGameTime}";
     }
 }
