@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 
 public class Gameplay : MonoBehaviour
@@ -13,6 +14,7 @@ public class Gameplay : MonoBehaviour
     private float moverightStatus;
     private float boostStatus;
     public ScoreUI scoreUI;
+    public TreatSpawner treatSpawner;
     private Rigidbody2D rb;
     SpriteRenderer sprite;
     public float movementSpeed = 5;
@@ -20,6 +22,7 @@ public class Gameplay : MonoBehaviour
     private Vector2 movement;
     public float boostCooldown = 3;
     public float boostTimer = 0;
+    private float resetStatus;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -51,24 +54,20 @@ public class Gameplay : MonoBehaviour
     public void OnBoost(InputValue value)
     {
         boostStatus = (value.Get<float>());
-      
-        
-        //if (boostStatus == 1 && boostTimer <= 3)
-        //{
-        //    boostTimer += Time.deltaTime;
-        //    movementSpeed += 10;
-        //}
-        //else
-        //{
-        //    movementSpeed = 5;
-        //    boostTimer = 0;
-        //}
     }
 
     public void OnMove(InputValue input)
     {
         movement = input.Get<Vector2>();
     }
+
+    public void OnReset(InputValue value)
+    {
+        resetStatus = (value.Get<float>());
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+    
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
@@ -79,6 +78,7 @@ public class Gameplay : MonoBehaviour
         {
           other.gameObject.SetActive(false);
           scoreUI.OnTreatPickup();
+          treatSpawner.SpawnTreat();
         }
 
     }

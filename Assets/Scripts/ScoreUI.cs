@@ -11,7 +11,6 @@ public class ScoreUI : MonoBehaviour
         score = 0;
         text = GetComponent<TMP_Text>();
         text.text = $"Score: {score}";
-        
     }
 
     // Update is called once per frame
@@ -23,7 +22,5 @@ public class ScoreUI : MonoBehaviour
     {
         score++;
         text.text = $"Score: {score}";
-
-
     }
 }

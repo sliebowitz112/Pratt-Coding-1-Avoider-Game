@@ -6,7 +6,6 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyObjects;
     public float spawnCooldown = 2;
-    
     public float minPosition;
     public float maxPosition;
     public float minEnemySpeed;
@@ -15,6 +14,9 @@ public class EnemySpawner : MonoBehaviour
     public float mediumGameTime;
     public float hardGameTime;
     public float totalGameTime;
+    public static bool easyLevel;
+    public static bool mediumLevel;
+    public static bool hardLevel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +39,9 @@ public class EnemySpawner : MonoBehaviour
             easyGameTime = 0;
             SpawnEnemy();
             Debug.Log("spawn enemy");
+            minEnemySpeed = 1;
+            maxEnemySpeed = 5;
+            easyLevel = true;
         }
 
         if (mediumGameTime >= spawnCooldown && totalGameTime > 15)
@@ -44,6 +49,9 @@ public class EnemySpawner : MonoBehaviour
             spawnCooldown = 1;
             mediumGameTime = 0;
             SpawnEnemy();
+            minEnemySpeed = 5;
+            maxEnemySpeed = 15;
+            mediumLevel = true;
         }
 
         if (hardGameTime >= spawnCooldown && hardGameTime > 20)
@@ -51,6 +59,9 @@ public class EnemySpawner : MonoBehaviour
             spawnCooldown = 0.5f;
             hardGameTime = 0;
             SpawnEnemy();
+            minEnemySpeed = 10;
+            maxEnemySpeed = 20;
+            hardLevel = true;
         }
     }
     void SpawnEnemy()
