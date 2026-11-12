@@ -9,10 +9,12 @@ public class LevelUI : MonoBehaviour
     public float boostTimer;
     private float timers = 0f;
     private float totalTime = 0f;
+    private AudioSource audio;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         boostTimer = 0;
         timers = 3;
         timer = GetComponent<TMP_Text>();
@@ -47,6 +49,7 @@ public class LevelUI : MonoBehaviour
         if (Gameplay.gameOver == true)
             {
                 boost.text = " ";
+                audio.Stop();
             }
 
       

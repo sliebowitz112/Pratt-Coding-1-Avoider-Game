@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -8,10 +9,12 @@ public class GameOverUI : MonoBehaviour
     //private float timers = 0f;
     private float totalTime = 0f;
     private TMP_Text dead;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+      
         timer = GetComponent<TMP_Text>();
     }
 
@@ -22,13 +25,15 @@ public class GameOverUI : MonoBehaviour
         {
             totalTime += Time.deltaTime;
         }
-       
+
         if (Gameplay.gameOver == true)
         {
+            
             timer.fontSize = 30;
             timer.text = $"GAME OVER MAN! " +
                 $"              You lasted:  {totalTime.ToString("F1")} " +
                 $"seconds! press 'r' to restart";
+
         }
 
     }

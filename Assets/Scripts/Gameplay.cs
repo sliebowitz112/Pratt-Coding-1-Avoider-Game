@@ -1,8 +1,9 @@
-using UnityEditor.Build.Reporting;
+
 using UnityEngine;
+
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.DebugUI;
+
 
 
 public class Gameplay : MonoBehaviour
@@ -28,6 +29,7 @@ public class Gameplay : MonoBehaviour
     private float resetStatus;
     public static bool boostAvail;
     public static bool gameOver;
+  
     void Start()
     {
         gameOver = false;
@@ -37,6 +39,7 @@ public class Gameplay : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
         boostReset = movementSpeed;
         boostAvail = false;
+        
        
     }
   
@@ -85,6 +88,7 @@ public class Gameplay : MonoBehaviour
         {
             gameObject.SetActive(false);
             gameOver = true;
+           
 
         }
         else if (other.CompareTag("Treat"))

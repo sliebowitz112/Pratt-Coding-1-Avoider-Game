@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    private AudioSource audio;
     public float objectSpeed = 4;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -20,6 +21,10 @@ public class EnemyMovement : MonoBehaviour
         if (other.CompareTag("Boundary"))
         {
             Destroy(gameObject);
+        }
+        if (other.CompareTag("Player"))
+        {
+            audio.Play();
         }
     }
 }
